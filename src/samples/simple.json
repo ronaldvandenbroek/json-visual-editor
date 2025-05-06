@@ -1,36 +1,150 @@
 {
-  "number": 123456,
-  "string": {
-    "text": "Hello, World!",
-    "URL": "https://github.com/ogaoga/json-visual-editor",
-    "image": "https://raw.githubusercontent.com/ogaoga/json-visual-editor/develop/resources/json-visual-editor.png"
+  "personal_information": {
+    "full_name": "Lucas Adrianus van der Meer",
+    "preferred_name": "Lucas",
+    "address": "Bachlaan 12, 3016 GM Rotterdam",
+    "phone": "06-29184523",
+    "email": "lucas.vdmeer@example.com",
+    "date_of_birth": "1997-09-22",
+    "nationality": "Nederlands",
+    "driver_license": "B",
+    "linkedin": "https://www.linkedin.com/in/lucasvdmeer",
+    "github": "https://github.com/lucasmeer"
   },
-  "null": null,
-  "boolean": {
-    "true": true,
-    "false": false
-  },
-  "array": ["apple", "orange", "banana"],
-  "object": {
-    "name": "John",
-    "age": 32,
-    "isMarried": true
-  },
-  "nested objects": {
-    "object": {
-      "object": {
-        "object": {
-          "object": {
-            "object": {
-              "object": {
-                "object": {
-                  "color": "red"
-                }
-              }
-            }
-          }
+  "profile": "Gepassioneerde software engineer met een sterke interesse in cloud computing en data-engineering. Combineert technische diepgang met communicatieve vaardigheden en neemt graag initiatief binnen multidisciplinaire teams.",
+  "traits": ["Resultaatgericht", "Teamspeler", "Leergierig", "Analytisch", "Proactief"],
+  "education": [
+    {
+      "institution": "Technische Universiteit Delft",
+      "programs": [
+        {
+          "program": "Premaster Computer Science",
+          "period": "september 2020 – februari 2021"
+        },
+        {
+          "program": "Master Computer Science",
+          "period": "februari 2021 – januari 2024",
+          "specialization": "Distributed Systems & Data Engineering",
+          "focus_areas": ["Cloud-native development", "Data Pipelines", "Big Data Analytics"],
+          "thesis": "Scalable event-stream processing with Apache Flink in microservice environments"
         }
-      }
+      ]
+    },
+    {
+      "program": "Tussenjaar",
+      "description": "Zelfstudie en certificering op het gebied van cloud computing (Azure, AWS)",
+      "period": "augustus 2019 – augustus 2020"
+    },
+    {
+      "institution": "Avans Hogeschool Breda",
+      "program": "HBO ICT & Software Engineering",
+      "minor": "Cloud & Security",
+      "electives": ["Android Development", "Ethical Hacking"],
+      "period": "september 2015 – juli 2019",
+      "honors": "Cum Laude"
+    },
+    {
+      "institution": "Rijnlands Lyceum Wassenaar",
+      "program": "HAVO",
+      "period": "september 2009 – juni 2015",
+      "honors": "Cum Laude"
     }
-  }
+  ],
+  "work_experience": [
+    {
+      "company": "CloudForge Solutions",
+      "period": "februari 2023 – december 2023",
+      "role": "Afstudeerstagiair cloud engineering",
+      "tasks": [
+        "Onderzoek en implementatie van een real-time anomaly detection pipeline in Azure",
+        "Opzetten van CI/CD voor serverless data-analyse-applicaties"
+      ]
+    },
+    {
+      "company": "Techwave B.V.",
+      "period": "februari 2020 – juni 2020",
+      "role": "Stagiair DevOps engineering",
+      "tasks": [
+        "Containeriseren van legacy applicaties met Docker",
+        "Automatiseren van tests met GitLab CI"
+      ]
+    },
+    {
+      "company": "Greenbyte",
+      "period": "juni 2018 – augustus 2018",
+      "role": "Backend developer (tijdelijk project)",
+      "tasks": [
+        "Ontwikkeling van REST API’s in Python Flask voor een IoT-dashboard"
+      ]
+    },
+    {
+      "company": "Supermarkt De Boer",
+      "period": "januari 2013 – december 2017",
+      "role": "Allround medewerker",
+      "notes": "Ervaring opgedaan in klantcontact en teamwerk"
+    }
+  ],
+  "skills": {
+    "languages": {
+      "Nederlands": "Moedertaal",
+      "Engels": "Vloeiend",
+      "TOEFL": "111/120 (C1)"
+    },
+    "programming_languages": {
+      "proficient_in": ["Python", "Java", "JavaScript", "Go", "Bash"],
+      "basic_knowledge": ["Rust", "Kotlin"]
+    }
+  },
+  "publications": [
+    {
+      "authors": ["Meer, L.A. v.d.", "Koeleman, F.", "Singh, R.", "Zhou, L."],
+      "title": "Designing Fault-Tolerant Data Pipelines with Serverless Architectures",
+      "book": "Proceedings of the International Conference on Cloud Computing 2024",
+      "conference": "CloudCom 2024",
+      "volume": "29",
+      "publisher": "IEEE",
+      "doi": "https://doi.org/10.1109/cloudcom.2024.029"
+    }
+  ],
+  "extracurricular": [
+    {
+      "organization": "CloudGuild TU Delft",
+      "roles": [
+        {
+          "role": "Voorzitter",
+          "period": "september 2022 – september 2023"
+        },
+        {
+          "role": "Technisch coördinator",
+          "period": "september 2021 – september 2022"
+        }
+      ],
+      "description": "Studentenvereniging gericht op cloud-innovatie en het organiseren van technische workshops"
+    },
+    {
+      "event": "Hackathon DataDive, Estland",
+      "date": "mei 2023",
+      "achievement": "Winnaar (1e plaats)",
+      "project": "Real-time ML model voor verkeersincidentdetectie met Kafka en PyTorch"
+    },
+    {
+      "event": "Hackathon HackZurich, Zwitserland",
+      "participations": [
+        {
+          "year": 2022,
+          "project": "Smart energy dashboard met AI-optimalisatie"
+        },
+        {
+          "year": 2023,
+          "project": "AI-gestuurde persoonlijke data-wallet voor privacybeheer"
+        }
+      ]
+    }
+  ],
+  "hobbies_and_interests": [
+    "Boulderen en sportklimmen",
+    "Vrijwilliger bij CoderDojo (programmeerworkshops voor jongeren)",
+    "Projectmatig werken aan home automation met Raspberry Pi",
+    "Lezen over technologie en psychologie"
+  ]
 }
