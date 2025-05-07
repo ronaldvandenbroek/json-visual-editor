@@ -39,7 +39,7 @@
     "webpack": "4.42.0"
   },
   "scripts": {
-    "reinstall": "npm install --no-audit --no-fund && npm dedupe --no-audit && npm run build",
+    "reinstall": "npm install --no-audit --no-fund && npm dedupe --no-audit && npm run start",
     "ts:version": "tsc -v",
     "node:version": "node -v",
     "start": "react-app-rewired start",

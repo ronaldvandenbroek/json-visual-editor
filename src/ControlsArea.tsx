@@ -92,7 +92,7 @@ const ControlsArea: React.FC = () => {
   }, [dispatch, pasteSample]);
 
   return (
-    <nav className="navbar px-1 py-0" style={{ overflow: 'visible' }}>
+    <nav className="navbar px-1 py-0 d-flex align-items-center justify-content-between" style={{ overflow: 'visible' }}>
       <ul className="nav">
         <li className="nav-item">
           <label className="btn btn-link" title="Upload PDF">
@@ -127,59 +127,63 @@ const ControlsArea: React.FC = () => {
           </button>
         </li>
       </ul>
-      <div
-        className="d-flex align-items-center"
-        style={{
-          backgroundColor: '#f8f9fa',
-          borderRadius: '5px',
-          padding: '5px',
-        }}
-      >
+      <div className="d-flex align-items-center justify-content-end" style={{ flexGrow: 1 }}>
+        <div
+          className="d-flex align-items-center"
+          style={{
+            backgroundColor: '#f8f9fa',
+            borderRadius: '5px',
+            padding: '5px',
+            marginRight: '10px',
+            marginBottom: '5px',
+          }}
+        >
+          <ul className="nav">
+            <li className="nav-item">
+              <button
+                id="copy-to-clipboard"
+                data-clipboard-target="#json-text"
+                disabled={!isValid}
+                className="btn btn-link"
+                title="Copy"
+              >
+                <i className="far fa-copy" />
+              </button>
+            </li>
+            <li className="nav-item">
+              <label className="btn btn-link" title="Upload JSON">
+                <i className="fas fa-file-upload" />
+                <input
+                  type="file"
+                  accept="application/json"
+                  style={{ display: 'none' }}
+                  onChange={onFileUpload}
+                />
+              </label>
+            </li>
+            <li className="nav-item">
+              <button
+                className="btn btn-link"
+                title="Paste Example JSON"
+                onClick={onPasteExampleJson}
+              >
+                <i className="fas fa-paste" />
+              </button>
+            </li>
+          </ul>
+        </div>
         <ul className="nav">
-          <li className="nav-item">
-            <button
-              id="copy-to-clipboard"
-              data-clipboard-target="#json-text"
-              disabled={!isValid}
-              className="btn btn-link"
-              title="Copy"
+          <li className="control-count nav-item">
+            <span
+              className={`text-count ${
+                text.length > 0 && !isValid ? 'invalid' : ''
+              }`}
             >
-              <i className="far fa-copy" />
-            </button>
-          </li>
-          <li className="nav-item">
-            <label className="btn btn-link" title="Upload JSON">
-              <i className="fas fa-file-upload" />
-              <input
-                type="file"
-                accept="application/json"
-                style={{ display: 'none' }}
-                onChange={onFileUpload}
-              />
-            </label>
-          </li>
-          <li className="nav-item">
-            <button
-              className="btn btn-link"
-              title="Paste Example JSON"
-              onClick={onPasteExampleJson}
-            >
-              <i className="fas fa-paste" />
-            </button>
+              {text.length}
+            </span>
           </li>
         </ul>
       </div>
-      <ul className="nav justify-content-end">
-        <li className="control-count nav-item">
-          <span
-            className={`text-count ${
-              text.length > 0 && !isValid ? 'invalid' : ''
-            }`}
-          >
-            {text.length}
-          </span>
-        </li>
-      </ul>
     </nav>
   );
 };
