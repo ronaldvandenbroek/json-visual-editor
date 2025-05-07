@@ -34,12 +34,13 @@
     "react-scripts": "3.4.1",
     "redux": "4.0.5",
     "redux-localstorage": "0.4.1",
+    "redux-thunk": "2.3.0",
     "typescript": "3.7.2",
     "validator": "13.0.0",
     "webpack": "4.42.0"
   },
   "scripts": {
-    "reinstall": "npm install --no-audit --no-fund && npm dedupe --no-audit && npm run start",
+    "reinstall": "npm install --no-audit --no-fund && npm dedupe --no-audit --no-fund && npm run start",
     "ts:version": "tsc -v",
     "node:version": "node -v",
     "start": "react-app-rewired start",
