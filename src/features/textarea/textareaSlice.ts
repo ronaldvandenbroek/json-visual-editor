@@ -6,7 +6,7 @@ export enum ValidityType {
   None = 'none',
 }
 
-const InitialFrameWidth = 400;
+const InitialFrameWidth = 450;
 
 interface State {
   isTextareaClose: boolean;

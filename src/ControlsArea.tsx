@@ -18,6 +18,30 @@ const ControlsArea: React.FC = () => {
     saveAs(blob, 'data.json');
   };
 
+  const downloadTextCV = (text: string) => {
+    try {
+      const json = JSON.parse(text);
+
+      const generateText = (obj: any, indent = 0): string => {
+        return Object.entries(obj)
+          .map(([key, value]) => {
+            const indentation = '  '.repeat(indent);
+            if (typeof value === 'object' && value !== null) {
+              return `${indentation}${key}:\n${generateText(value, indent + 1)}`;
+            }
+            return `${indentation}${key}: ${value}`;
+          })
+          .join('\n');
+      };
+
+      const textCV = generateText(json);
+      const blob = new Blob([textCV], { type: 'text/plain;charset=utf-8' });
+      saveAs(blob, 'CV.txt');
+    } catch (error) {
+      alert('Invalid JSON format. Unable to generate CV.');
+    }
+  };
+
   const dispatch = useDispatch();
   const { setData, pasteSample } = dataSlice.actions;
   const { setLocalText } = textareaSlice.actions;
@@ -28,6 +52,8 @@ const ControlsArea: React.FC = () => {
   const isValid = useSelector(
     (state: RootState) => state.textarea.validity === ValidityType.Valid
   );
+
+
 
   const onDeleteButtonClicked = useCallback(() => {
     dispatch(setData(null));
@@ -91,42 +117,76 @@ const ControlsArea: React.FC = () => {
     dispatch(pasteSample());
   }, [dispatch, pasteSample]);
 
+  const saveExampleCV = useCallback(() => {
+    alert('Mock save operation: Saving current JSON as example CV');
+  }, []);
+
   return (
     <nav className="navbar px-1 py-0 d-flex align-items-center justify-content-between" style={{ overflow: 'visible' }}>
-      <ul className="nav">
-        <li className="nav-item">
-          <label className="btn btn-link" title="Upload PDF">
-            <i className="fas fa-file-pdf" />
-            <input
-              type="file"
-              accept="application/pdf"
-              style={{ display: 'none' }}
-              onChange={onPdfUpload}
-            />
-          </label>
-        </li>
-        <li className="nav-item">
-          <button
-            id="donwload"
-            disabled={!isValid}
-            className="btn btn-link"
-            onClick={() => downloadJson(text)}
-            title="Download"
-          >
-            <i className="fas fa-file-download" />
-          </button>
-        </li>
-        <li className="nav-item">
-          <button
-            className="btn btn-link"
-            disabled={isEmpty}
-            onClick={onDeleteButtonClicked}
-            title="Clear"
-          >
-            <i className="far fa-trash-alt" />
-          </button>
-        </li>
-      </ul>
+      <div
+        className="d-flex align-items-center"
+        style={{
+          backgroundColor: '#f8f9fa',
+          borderRadius: '5px',
+          padding: '5px',
+          marginRight: '10px',
+          marginBottom: '5px',
+          flexDirection: 'column',
+        }}
+      >
+        <span
+          style={{
+            fontWeight: 'bold',
+            color: '#092812',
+            textAlign: 'center',
+          }}
+        >
+          CV Builder
+        </span>
+        <ul className="nav">
+          <li className="nav-item">
+            <label className="btn btn-link" title="Upload PDF">
+              <i className="fas fa-file-pdf" />
+              <input
+                type="file"
+                accept="application/pdf"
+                style={{ display: 'none' }}
+                onChange={onPdfUpload}
+              />
+            </label>
+          </li>
+          <li className="nav-item">
+            <button
+              className="btn btn-link"
+              title="Save as Example CV"
+              onClick={saveExampleCV}
+              disabled={isEmpty}
+            >
+              <i className="fas fa-save" />
+            </button>
+          </li>
+          <li className="nav-item">
+            <button
+              className="btn btn-link"
+              title="Download Text CV"
+              onClick={() => downloadTextCV(text)}
+              disabled={!isValid}
+            >
+              <i className="fas fa-file-download" />
+            </button>
+          </li>
+          <li className="nav-item">
+            <button
+              className="btn btn-link"
+              disabled={isEmpty}
+              onClick={onDeleteButtonClicked}
+              title="Clear"
+            >
+              <i className="far fa-trash-alt" />
+            </button>
+          </li>
+        </ul>
+      </div>
       <div className="d-flex align-items-center justify-content-end" style={{ flexGrow: 1 }}>
         <div
           className="d-flex align-items-center"
@@ -136,20 +196,19 @@ const ControlsArea: React.FC = () => {
             padding: '5px',
             marginRight: '10px',
             marginBottom: '5px',
+            flexDirection: 'column',
           }}
         >
+          <span
+            style={{
+              fontWeight: 'bold',
+              color: '#092812',
+              textAlign: 'center',
+            }}
+          >
+            Debug
+          </span>
           <ul className="nav">
-            <li className="nav-item">
-              <button
-                id="copy-to-clipboard"
-                data-clipboard-target="#json-text"
-                disabled={!isValid}
-                className="btn btn-link"
-                title="Copy"
-              >
-                <i className="far fa-copy" />
-              </button>
-            </li>
             <li className="nav-item">
               <label className="btn btn-link" title="Upload JSON">
                 <i className="fas fa-file-upload" />
@@ -168,6 +227,28 @@ const ControlsArea: React.FC = () => {
                 onClick={onPasteExampleJson}
               >
                 <i className="fas fa-paste" />
+              </button>
+            </li>
+            <li className="nav-item">
+              <button
+                id="download"
+                disabled={!isValid}
+                className="btn btn-link"
+                onClick={() => downloadJson(text)}
+                title="Download JSON"
+              >
+                <i className="fas fa-file-alt" />
+              </button>
+            </li>
+            <li className="nav-item">
+              <button
+                id="copy-to-clipboard"
+                data-clipboard-target="#json-text"
+                disabled={!isValid}
+                className="btn btn-link"
+                title="Copy"
+              >
+                <i className="far fa-copy" />
               </button>
             </li>
           </ul>
